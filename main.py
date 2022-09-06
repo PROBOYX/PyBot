@@ -1,9 +1,9 @@
 from telethon  import TelegramClient, events, Button
-from pyMorse import translator
+from pyMorseTranslator.translator import *
 
 
-encoder = translator.Encoder()
-decoder = translator.Decoder()
+encoder = Encoder()
+decoder = Decoder()
 
 def text(text):
     if text.startswith(".") or text.startswith("-"):
