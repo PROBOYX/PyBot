@@ -49,9 +49,9 @@ async def translate(event):
     if event.text == "/start":
         pass
     else:
-        text(event.text)
-        print (text)
-        await event.reply(str(text))
+        Text = text(event.text)
+        print (Text)
+        await event.reply(str(Text))
 
 
 bot.run_until_disconnected()
