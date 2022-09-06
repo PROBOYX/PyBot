@@ -29,6 +29,8 @@ async def translate(event):
         pass
     else:
         text(event.text)
+        print (text)
+        await event.reply(text)
 
 
 bot.run_until_disconnected()
