@@ -1,14 +1,38 @@
 from telethon  import TelegramClient, events, Button
-import morse_talk as mtalk
+
+CODE = {'A': '.-',     'B': '-...',   'C': '-.-.', 
+        'D': '-..',    'E': '.',      'F': '..-.',
+        'G': '--.',    'H': '....',   'I': '..',
+        'J': '.---',   'K': '-.-',    'L': '.-..',
+        'M': '--',     'N': '-.',     'O': '---',
+        'P': '.--.',   'Q': '--.-',   'R': '.-.',
+        'S': '...',    'T': '-',      'U': '..-',
+        'V': '...-',   'W': '.--',    'X': '-..-',
+        'Y': '-.--',   'Z': '--..',   ' ': '/',
+
+        '0': '-----',  '1': '.----',  '2': '..---',
+        '3': '...--',  '4': '....-',  '5': '.....',
+        '6': '-....',  '7': '--...',  '8': '---..',
+        '9': '----.' 
+        }
+
+CODE_REVERSED = {value:key for key,value in CODE.items()}
+
+def encode(s):
+    return ' '.join(CODE.get(i.upper()) for i in s)
+
+def decode(s):
+    return ''.join(CODE_REVERSED.get(i) for i in s.split())
+
 
 
 def text(text):
     if text.startswith(".") or text.startswith("-"):
-        decode = mtalk.decode(text)
-        return decode
+        decodeText = decode(text)
+        return decodeText
     else:
-        encode = mtalk.encode(text)
-        return encode
+        encodeText = encode(text)
+        return encodeText
 
 api_id = 1621727
 api_hash = "31350903c528876f79527398c09660ce"
@@ -27,7 +51,7 @@ async def translate(event):
     else:
         text(event.text)
         print (text)
-        await event.reply(text)
+        await event.reply(str(text))
 
 
 bot.run_until_disconnected()
