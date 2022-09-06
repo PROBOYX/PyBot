@@ -4,10 +4,10 @@ import morse_talk as mtalk
 
 def text(text):
     if text.startswith(".") or text.startswith("-"):
-        decode = mtalk.decode(text).plaintext
+        decode = mtalk.decode(text)
         return decode
     else:
-        encode = mtalk.encode(text).morse
+        encode = mtalk.encode(text)
         return encode
 
 api_id = 1621727
