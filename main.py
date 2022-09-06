@@ -1,16 +1,13 @@
 from telethon  import TelegramClient, events, Button
-from pyMorseTranslator.translator import *
+import morse_talk as mtalk
 
-
-encoder = Encoder()
-decoder = Decoder()
 
 def text(text):
     if text.startswith(".") or text.startswith("-"):
-        decode = decoder.decode(text).plaintext
+        decode = mtalk.decode(text).plaintext
         return decode
     else:
-        encode = encoder.encode(text).morse
+        encode = mtalk.encode(text).morse
         return encode
 
 api_id = 1621727
