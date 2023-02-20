@@ -20,7 +20,7 @@ async def start(event):
 
 
 
-@xbot.on(events.NewMessage(pattern="/eval ?(.*)"))
+@xbot.on(events.NewMessage(pattern="/run ?(.*)"))
 async def _(event):
     cmd = event.text.split(" ", maxsplit=1)[1]
     if not cmd:
